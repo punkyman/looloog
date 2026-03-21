@@ -36,11 +36,15 @@ void setup() {
 }
 
 void loop() {
+  unsigned long start = millis();
+
   // update each mux to send midi packets
   g_mux1.Update();
   g_mux2.Update();
 
+  unsigned long duration = millis() - start;
+
   // cap refresh rate to 60hz
-  delay(16);
+  delay(16 - duration);
 }
 
