@@ -15,8 +15,22 @@ void Mux::Update()
 {
     Serial.println("\nupdate mux component on CS pin " + m_cableSelectPin);
 
-    for(int i = 0; i < m_numControls; ++i)
+    for(int i = 0; i < m_numControls && i < 16; ++i)
     {
+        bool s0 = m_numControls & 0b1000;
+        bool s1 = m_numControls & 0b0100;
+        bool s2 = m_numControls & 0b0010;
+        bool s3 = m_numControls & 0b0001;
+
+        digitalWrite(m_s0Pin, s0);
+        digitalWrite(m_s0Pin, s1);
+        digitalWrite(m_s0Pin, s2);
+        digitalWrite(m_s0Pin, s3);
+
+        int debugValue = s0 * 0b1000 + s1 * 0b0100 + s2 * 0b0010 + s3 * 0b0001;
+
+        Serial.println("\nupdate for component number " + debugValue);
+
         m_controls[i].Update();
     }
 }
