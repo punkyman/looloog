@@ -18,7 +18,7 @@ void Pot::Update(int _muxPin)
         Serial.println("\tcontrol number " + m_controlNumber);
         Serial.println("\tchannel: " + m_channelNumber);
 
-        // taken from code sample, not sure about this conversion
+        // as arduino DAC encodes on 10bit (0-1024), reduce range to (0-128)
         midi::DataByte midiValue = value >> 3;
         Serial.println("\tvalue: " + midiValue);
 
