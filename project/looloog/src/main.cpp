@@ -10,11 +10,11 @@
 #define BUS_S2_PIN 4
 #define BUS_S3_PIN 5
 
-Control g_mux1Controls[1] = {
+Control g_mux1Controls[] = {
  Pot(1, 1, 15)
 };
 
-Control g_mux2Controls[2] = {
+Control g_mux2Controls[] = {
   Pot(1, 2, 7),
   Button(1, 3, 15),
 };
@@ -24,18 +24,23 @@ Mux g_mux2(g_mux2Controls, 2, BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN, 7,
 
 void setup() {
   Serial.begin(9600);
+
+  // initialize bus pins here as they are shared by all mux
+  pinMode(BUS_S0_PIN, OUTPUT);
+  pinMode(BUS_S1_PIN, OUTPUT);
+  pinMode(BUS_S2_PIN, OUTPUT);
+  pinMode(BUS_S3_PIN, OUTPUT);
+
   // midi initialization without any input expected
   MIDI.begin(MIDI_CHANNEL_OFF);
 }
 
 void loop() {
-
-// update panel values
+  // update each mux to send midi packets
   g_mux1.Update();
   g_mux2.Update();
 
-// cap refresh rate to 60hz
+  // cap refresh rate to 60hz
   delay(16);
-  Serial.println("Ping");
 }
 
