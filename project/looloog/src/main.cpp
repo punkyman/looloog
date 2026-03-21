@@ -5,6 +5,9 @@
 #include "button/button.h"
 #include "mux/mux.h"
 
+#define D6 6
+#define D7 7
+
 #define BUS_S0_PIN 2
 #define BUS_S1_PIN 3
 #define BUS_S2_PIN 4
@@ -19,8 +22,8 @@ Control g_mux2Controls[] = {
   Button(1, 3, 15),
 };
 
-Mux g_mux1(g_mux1Controls, 1, 6, A3);
-Mux g_mux2(g_mux2Controls, 2, 7, A2);
+Mux g_mux1(g_mux1Controls, 1, D6, A3);
+Mux g_mux2(g_mux2Controls, 2, D7, A2);
 
 void setup() {
   Serial.begin(9600);
