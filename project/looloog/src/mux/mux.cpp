@@ -57,7 +57,7 @@ void Mux::Update()
 
                 Serial.println("\nupdate for component number " + debugValue);
 
-                m_controls[i].Update(m_outputPin);
+                m_controls[j].Update(m_outputPin);
             }
         }
     }
