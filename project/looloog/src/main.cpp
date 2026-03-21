@@ -1,15 +1,26 @@
 #include <Arduino.h>
 #include "midihandler/midihandler.h"
+#include "control/control.h"
 #include "pot/pot.h"
 #include "button/button.h"
 #include "mux/mux.h"
 
-Pot g_pot1(1, 1, 15);
-Pot g_pot2(1, 2, 7);
-Button g_button1(1, 3, 15);
+#define BUS_S0_PIN 2
+#define BUS_S1_PIN 3
+#define BUS_S2_PIN 4
+#define BUS_S3_PIN 5
 
-Mux g_mux1;
-Mux g_mux2;
+Control g_mux1Controls[1] = {
+ Pot(1, 1, 15)
+};
+
+Control g_mux2Controls[2] = {
+  Pot(1, 2, 7),
+  Button(1, 3, 15),
+};
+
+Mux g_mux1(g_mux1Controls, 1, BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN, 6, A3);
+Mux g_mux2(g_mux2Controls, 2, BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN, 7, A2);
 
 void setup() {
   Serial.begin(9600);
@@ -18,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-  
+
 // update panel values
   g_mux1.Update();
   g_mux2.Update();

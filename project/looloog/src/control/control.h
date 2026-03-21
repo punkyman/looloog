@@ -1,7 +1,7 @@
 #pragma once
 #include <MIDI.h>
 
-class Control
+ class Control
 {
     protected:
         midi::DataByte m_controlNumber;
@@ -14,5 +14,5 @@ class Control
                 : m_controlNumber(_controlNumber), m_channelNumber(_channelNumber), m_muxAddress(_muxAddress)
         {}
         int GetMuxAdress() { return m_muxAddress; }
-        virtual void Update(int _muxPin) = 0;
+        virtual void Update(int _muxPin) {}
 };

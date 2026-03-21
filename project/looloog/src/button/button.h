@@ -1,7 +1,7 @@
 #pragma once
 #include "control/control.h"
 
-class Button : Control
+class Button : public Control
 {
     private:
         bool m_previousState;

@@ -1,7 +1,7 @@
 #pragma once
 #include "control/control.h"
 
-class Pot : Control
+class Pot : public Control
 {
     private:
         int m_previousValue;
