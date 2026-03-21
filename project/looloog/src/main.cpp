@@ -19,17 +19,14 @@ Control g_mux2Controls[] = {
   Button(1, 3, 15),
 };
 
-Mux g_mux1(g_mux1Controls, 1, BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN, 6, A3);
-Mux g_mux2(g_mux2Controls, 2, BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN, 7, A2);
+Mux g_mux1(g_mux1Controls, 1, 6, A3);
+Mux g_mux2(g_mux2Controls, 2, 7, A2);
 
 void setup() {
   Serial.begin(9600);
 
-  // initialize bus pins here as they are shared by all mux
-  pinMode(BUS_S0_PIN, OUTPUT);
-  pinMode(BUS_S1_PIN, OUTPUT);
-  pinMode(BUS_S2_PIN, OUTPUT);
-  pinMode(BUS_S3_PIN, OUTPUT);
+  // initialize bus shared by all mux
+  Mux::InitMuxBus(BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN);
 
   // midi initialization without any input expected
   MIDI.begin(MIDI_CHANNEL_OFF);
