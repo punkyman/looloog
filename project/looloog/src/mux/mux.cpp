@@ -31,6 +31,7 @@ void Mux::InitMuxBus(int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin)
 
 // enable component
 // then use the bus to select the used addresses and update existing controls
+// 74HC4067 component frequency change is 89mhz, so this code should be safe to execute without additional delay
 void Mux::Update()
 {
     Serial.println("\nupdate mux component on CS pin " + m_cableSelectPin);
