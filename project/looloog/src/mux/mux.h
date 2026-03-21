@@ -12,8 +12,9 @@ class Mux
         int m_s2Pin;
         int m_s3Pin;
         int m_cableSelectPin;
+        int m_outputPin;
 
     public:
-        Mux(Control* _controls, int _numControls, int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin, int _cableSelectPin);
+        Mux(Control* _controls, int _numControls, int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin, int _cableSelectPin, int _outputPin);
         void Update();
 };

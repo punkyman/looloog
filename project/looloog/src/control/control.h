@@ -6,12 +6,10 @@ class Control
     protected:
         midi::DataByte m_controlNumber;
         midi::Channel m_channelNumber;
-        int m_signalPin;
 
     public:
-        Control(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _signalPin)
-                : m_controlNumber(_controlNumber), m_channelNumber(_channelNumber), m_signalPin(_signalPin)
+        Control(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxPin)
+                : m_controlNumber(_controlNumber), m_channelNumber(_channelNumber)
         {}
-        
-        virtual void Update() = 0;
+        virtual void Update(int _muxPin) = 0;
 };

@@ -5,12 +5,11 @@ Pot::Pot(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _signa
         : Control(_controlNumber, _channelNumber, _signalPin)
         , m_previousValue(0)
 {
-    pinMode(m_signalPin, INPUT);
 }
 
-void Pot::Update()
+void Pot::Update(int _muxPin)
 { 
-    int value = analogRead(m_signalPin);
+    int value = analogRead(_muxPin);
 
     if(m_previousValue != value)
     {

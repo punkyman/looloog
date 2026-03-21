@@ -4,16 +4,15 @@
 #define MIDI_HIGH 127
 #define MIDI_LOW 0
 
-Button::Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _signalPin)
-        : Control(_controlNumber, _channelNumber, _signalPin)
+Button::Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxPin)
+        : Control(_controlNumber, _channelNumber, _muxPin)
         , m_previousState(false)
 {
-    pinMode(m_signalPin, INPUT);
 }
 
-void Button::Update()
+void Button::Update(int _muxPin)
 {
-     bool state = digitalRead(m_signalPin);
+     bool state = digitalRead(_muxPin);
 
     if(m_previousState != state)
     {

@@ -1,14 +1,15 @@
 #include <Arduino.h>
 #include "mux.h"
 
-Mux::Mux(Control* _controls, int _numControls, int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin, int _cableSelectPin)
-            : m_controls(_controls), m_numControls(_numControls), m_s0Pin(_s0Pin), m_s1Pin(_s1Pin), m_s2Pin(_s2Pin), m_s3Pin(_s3Pin), m_cableSelectPin(_cableSelectPin)
+Mux::Mux(Control* _controls, int _numControls, int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin, int _cableSelectPin, int _outputPin)
+            : m_controls(_controls), m_numControls(_numControls), m_s0Pin(_s0Pin), m_s1Pin(_s1Pin), m_s2Pin(_s2Pin), m_s3Pin(_s3Pin), m_cableSelectPin(_cableSelectPin), m_outputPin(_outputPin)
 {
     pinMode(m_s0Pin, OUTPUT);
     pinMode(m_s1Pin, OUTPUT);
     pinMode(m_s2Pin, OUTPUT);
     pinMode(m_s3Pin, OUTPUT);
     pinMode(m_cableSelectPin, OUTPUT);
+    pinMode(m_outputPin, INPUT);
 }
 
 void Mux::Update()
@@ -31,6 +32,6 @@ void Mux::Update()
 
         Serial.println("\nupdate for component number " + debugValue);
 
-        m_controls[i].Update();
+        m_controls[i].Update(m_outputPin);
     }
 }
