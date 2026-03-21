@@ -6,7 +6,7 @@
 
 Button::Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress)
         : Control(_controlNumber, _channelNumber, _muxAddress)
-        , m_previousState(false)
+        , m_previousState(HIGH)
 {
 }
 
