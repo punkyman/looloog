@@ -16,6 +16,10 @@ void Mux::Update()
 {
     Serial.println("\nupdate mux component on CS pin " + m_cableSelectPin);
 
+    // enable component
+    // then use the bus to select the used addresses and update existing controls
+    digitalWrite(m_cableSelectPin, HIGH);
+
     for (int i = 0; i < 16; ++i)
     {
         for (int j = 0; j < m_numControls && j < 16; ++j)
@@ -40,4 +44,6 @@ void Mux::Update()
             }
         }
     }
+
+    digitalWrite(m_cableSelectPin, LOW);
 }
