@@ -4,21 +4,20 @@
 Mux::Mux(Control *_controls, int _numControls, int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin, int _cableSelectPin, int _outputPin)
     : m_controls(_controls), m_numControls(_numControls), m_s0Pin(_s0Pin), m_s1Pin(_s1Pin), m_s2Pin(_s2Pin), m_s3Pin(_s3Pin), m_cableSelectPin(_cableSelectPin), m_outputPin(_outputPin)
 {
-    pinMode(m_s0Pin, OUTPUT);
-    pinMode(m_s1Pin, OUTPUT);
-    pinMode(m_s2Pin, OUTPUT);
-    pinMode(m_s3Pin, OUTPUT);
     pinMode(m_cableSelectPin, OUTPUT);
     pinMode(m_outputPin, INPUT);
+
+    // default to HIGH as cable select is expected to be low to read address values
+    digitalWrite(m_cableSelectPin, HIGH);
 }
 
+// enable component
+// then use the bus to select the used addresses and update existing controls
 void Mux::Update()
 {
     Serial.println("\nupdate mux component on CS pin " + m_cableSelectPin);
 
-    // enable component
-    // then use the bus to select the used addresses and update existing controls
-    digitalWrite(m_cableSelectPin, HIGH);
+    digitalWrite(m_cableSelectPin, LOW);
 
     for (int i = 0; i < 16; ++i)
     {
@@ -45,5 +44,5 @@ void Mux::Update()
         }
     }
 
-    digitalWrite(m_cableSelectPin, LOW);
+    digitalWrite(m_cableSelectPin, HIGH);
 }

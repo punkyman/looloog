@@ -4,8 +4,8 @@
 #define MIDI_HIGH 127
 #define MIDI_LOW 0
 
-Button::Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxPin)
-        : Control(_controlNumber, _channelNumber, _muxPin)
+Button::Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress)
+        : Control(_controlNumber, _channelNumber, _muxAddress)
         , m_previousState(false)
 {
 }

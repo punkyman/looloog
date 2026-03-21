@@ -1,8 +1,8 @@
 #include "pot.h"
 #include "midihandler/midihandler.h"
 
-Pot::Pot(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _signalPin)
-        : Control(_controlNumber, _channelNumber, _signalPin)
+Pot::Pot(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress)
+        : Control(_controlNumber, _channelNumber, _muxAddress)
         , m_previousValue(0)
 {
 }
