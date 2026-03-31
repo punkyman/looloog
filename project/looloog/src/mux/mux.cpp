@@ -6,7 +6,7 @@ int Mux::m_s1Pin;
 int Mux::m_s2Pin;
 int Mux::m_s3Pin;
 
-Mux::Mux(Control *_controls, int _numControls, int _cableSelectPin, int _outputPin)
+Mux::Mux(Control** _controls, int _numControls, int _cableSelectPin, int _outputPin)
     : m_controls(_controls), m_numControls(_numControls), m_cableSelectPin(_cableSelectPin), m_outputPin(_outputPin)
 {
     pinMode(m_cableSelectPin, OUTPUT);
@@ -34,7 +34,7 @@ void Mux::InitMuxBus(int _s0Pin, int _s1Pin, int _s2Pin, int _s3Pin)
 // 74HC4067 component frequency change is 89mhz, so this code should be safe to execute without additional delay
 void Mux::Update()
 {
-    Serial.println("\nupdate mux component on CS pin " + m_cableSelectPin);
+    //Serial.println("\nupdate mux component on CS pin " + m_cableSelectPin);
 
     digitalWrite(m_cableSelectPin, LOW);
 
@@ -42,7 +42,7 @@ void Mux::Update()
     {
         for (int j = 0; j < m_numControls && j < 16; ++j)
         {
-            if (m_controls[j].GetMuxAdress() == i)
+            if (m_controls[j]->GetMuxAdress() == i)
             {
                 bool s0 = i & 0b1000;
                 bool s1 = i & 0b0100;
@@ -58,7 +58,7 @@ void Mux::Update()
 
                 Serial.println("\nupdate for component number " + debugValue);
 
-                m_controls[j].Update(m_outputPin);
+                m_controls[j]->Update(m_outputPin);
             }
         }
     }
