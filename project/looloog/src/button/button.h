@@ -8,5 +8,5 @@ class Button : public Control
 
     public:
         Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress);
-        virtual void Update(int _muxPin);
+        virtual void Update(int _muxPin) override;
 };
