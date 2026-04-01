@@ -17,13 +17,13 @@ void Button::Update(int _muxPin)
     if(m_previousState != state)
     {
         Serial.println("\nEvent on button");
-        Serial.println("\tchannel: ");
+        Serial.println("channel");
         Serial.println(m_channelNumber);
-        Serial.println("\tcontrol number ");
+        Serial.println("control number");
         Serial.println(m_controlNumber);
-        Serial.println("\tMux Address: ");
+        Serial.println("Mux Address");
         Serial.println(m_muxAddress);
-        Serial.println("\tvalue: ");
+        Serial.println("value");
         Serial.println(!state);
         
         // as we are reading value for a resistor pullup setup, reverse the logic
