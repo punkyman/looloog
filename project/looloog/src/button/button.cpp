@@ -21,6 +21,8 @@ void Button::Update(int _muxPin)
         Serial.println(m_channelNumber);
         Serial.println("\tcontrol number ");
         Serial.println(m_controlNumber);
+        Serial.println("\tMux Address: ");
+        Serial.println(m_muxAddress);
         Serial.println("\tvalue: ");
         Serial.println(!state);
         
