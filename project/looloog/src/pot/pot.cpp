@@ -13,6 +13,9 @@ void Pot::Update(int _muxPin)
 
     if(m_previousValue != value)
     {
+        // as arduino DAC encodes on 10bit (0-1024), reduce range to (0-128)
+        midi::DataByte midiValue = value >> 3;
+
         Serial.println("\nEvent on pot");
         Serial.println("channel");
         Serial.println(m_channelNumber);
@@ -20,12 +23,7 @@ void Pot::Update(int _muxPin)
         Serial.println(m_controlNumber);
         Serial.println("Mux Address");
         Serial.println(m_muxAddress);
-        Serial.println("channel");
-        Serial.println(m_channelNumber);
-
-        // as arduino DAC encodes on 10bit (0-1024), reduce range to (0-128)
-        midi::DataByte midiValue = value >> 3;
-        Serial.println("\tvalue: ");
+        Serial.println("value");
         Serial.println(midiValue);
 
         MIDI.sendControlChange(m_controlNumber, midiValue, m_channelNumber);
