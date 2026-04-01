@@ -53,8 +53,7 @@ void Mux::Update()
         digitalWrite(m_s2Pin, s2 ? HIGH : LOW);
         digitalWrite(m_s3Pin, s3 ? HIGH : LOW);
 
-        int debugValue = s3 * 0b1000 + s2 * 0b0100 + s1 * 0b0010 + s0 * 0b0001;
-
+        //int debugValue = s3 * 0b1000 + s2 * 0b0100 + s1 * 0b0010 + s0 * 0b0001;
         //Serial.println("\nupdate for component number ");
         //Serial.println(debugValue);
 
