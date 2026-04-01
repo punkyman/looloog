@@ -20,8 +20,6 @@ void Pot::Update(int _muxPin)
 
         // as arduino DAC encodes on 10bit (0-1024), reduce range to (0-128)
         midi::DataByte midiValue = value >> 3;
-        // reverse reading do correspond to the expected rotation of the pot
-        midiValue = 127 - midiValue;
         Serial.println("\tvalue: ");
         Serial.println(midiValue);
 
