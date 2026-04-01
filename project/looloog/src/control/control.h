@@ -13,6 +13,6 @@
         Control(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress)
                 : m_controlNumber(_controlNumber), m_channelNumber(_channelNumber), m_muxAddress(_muxAddress)
         {}
-        int GetMuxAdress() { return m_muxAddress; }
+        int GetMuxAddress() { return m_muxAddress; }
         virtual void Update(int _muxPin) {}
 };
