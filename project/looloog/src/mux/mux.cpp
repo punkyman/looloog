@@ -11,6 +11,8 @@ Mux::Mux(Control** _controls, int _numControls, int _cableSelectPin, int _output
 {
     pinMode(m_cableSelectPin, OUTPUT);
     pinMode(m_outputPin, INPUT);
+    // safety first, make sure pullup resistor is disabled on input pin
+    digitalWrite(m_outputPin, LOW);
 
     // default to HIGH as cable select is expected to be low to read address values
     digitalWrite(m_cableSelectPin, HIGH);
