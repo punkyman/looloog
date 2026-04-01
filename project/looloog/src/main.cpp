@@ -13,17 +13,12 @@
 #define BUS_S2_PIN 4
 #define BUS_S3_PIN 5
 
-Control* g_mux1Controls[] = {
- new Pot(1, 1, 15)
-};
-
-Control* g_mux2Controls[] = {
-  new Pot(1, 2, 7),
+Control* g_muxControls[] = {
+  new Pot(0, 3, 14),
   new Button(1, 3, 15),
 };
 
-Mux g_mux1(g_mux1Controls, 1, D6, A3);
-Mux g_mux2(g_mux2Controls, 2, D7, A2);
+Mux g_mux(g_muxControls, 2, D7, A2);
 
 void setup() {
   Serial.begin(9600);
@@ -39,8 +34,7 @@ void loop() {
   unsigned long start = millis();
 
   // update each mux to send midi packets
-  g_mux1.Update();
-  g_mux2.Update();
+  g_mux.Update();
 
   unsigned long duration = millis() - start;
 
