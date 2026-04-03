@@ -14,12 +14,12 @@
 #define BUS_S3_PIN 5
 
 Control* g_muxControls1[] = {
-  new Pot(3, 15),
+  new Pot(1, 15),
 };
 
 Control* g_muxControls2[] = {
-  new Pot(3, 14),
-  new Button(3, 15),
+  new Pot(2, 14),
+  new Button(2, 15),
 };
 
 Mux g_mux1(g_muxControls1, 1, D6, A3);
@@ -39,7 +39,7 @@ void loop() {
   unsigned long start = millis();
 
   // update each mux to send midi packets
-  //g_mux1.Update();
+  g_mux1.Update();
 
   g_mux2.Update();
 
