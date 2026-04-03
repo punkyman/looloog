@@ -42,7 +42,8 @@ void Mux::Update()
 
     for (int i = 0; i < m_numControls && i < 16; ++i)
     {
-        int address = m_controls[i]->GetMuxAddress();
+        // predicate : control is plugged at a mux address based relative to its number
+        int address = m_controls[i]->GetControlNumber();
         bool s3 = address & 0b1000;
         bool s2 = address & 0b0100;
         bool s1 = address & 0b0010;

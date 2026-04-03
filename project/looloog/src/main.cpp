@@ -14,12 +14,12 @@
 #define BUS_S3_PIN 5
 
 Control* g_muxControls1[] = {
-  new Pot(0, 3, 15),
+  new Pot(3, 15),
 };
 
 Control* g_muxControls2[] = {
-  new Pot(1, 3, 14),
-  new Button(1, 3, 15),
+  new Pot(3, 14),
+  new Button(3, 15),
 };
 
 Mux g_mux1(g_muxControls1, 1, D6, A3);

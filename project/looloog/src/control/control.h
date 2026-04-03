@@ -6,13 +6,11 @@
     protected:
         midi::DataByte m_controlNumber;
         midi::Channel m_channelNumber;
-        int m_muxAddress;
-
 
     public:
-        Control(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress)
-                : m_controlNumber(_controlNumber), m_channelNumber(_channelNumber), m_muxAddress(_muxAddress)
+        Control(midi::Channel _channelNumber, midi::DataByte _controlNumber)
+                : m_channelNumber(_channelNumber), m_controlNumber(_controlNumber)
         {}
-        int GetMuxAddress() { return m_muxAddress; }
+        int GetControlNumber() { return m_controlNumber; }
         virtual void Update(int _muxPin) {}
 };

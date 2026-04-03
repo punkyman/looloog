@@ -7,6 +7,6 @@ class Button : public Control
         bool m_previousState;
 
     public:
-        Button(midi::DataByte _controlNumber, midi::Channel _channelNumber, int _muxAddress);
+        Button(midi::Channel _channelNumber, midi::DataByte _controlNumber);
         virtual void Update(int _muxPin) override;
 };
