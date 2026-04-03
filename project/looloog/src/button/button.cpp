@@ -15,22 +15,12 @@ void Button::Update(int _muxPin)
      bool state = digitalRead(_muxPin);
 
     if(m_previousState != state)
-    {
-        Serial.println("\nEvent on button");
-        Serial.println("channel");
-        Serial.println(m_channelNumber);
-        Serial.println("control number");
-        Serial.println(m_controlNumber);
-        Serial.println("Mux Address");
-        Serial.println(m_muxAddress);
-        Serial.println("value");
-        Serial.println(!state);
-        
+    {   
         // as we are reading value for a resistor pullup setup, reverse the logic
         if(state == HIGH)
-            MIDI.sendControlChange(m_controlNumber, MIDI_LOW, m_channelNumber);
+            Midihandler::SendCC(m_channelNumber, m_controlNumber, MIDI_LOW);
         else
-            MIDI.sendControlChange(m_controlNumber, MIDI_HIGH, m_channelNumber);
+            Midihandler::SendCC(m_channelNumber, m_controlNumber, MIDI_HIGH);
 
         m_previousState = state;
     }

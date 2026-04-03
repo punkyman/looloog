@@ -2,5 +2,9 @@
 
 #include <USB-MIDI.h>
 
-// declare external based on what the MIDI_CREATE_DEFAULT_INSTANCE macro does
-extern MIDI_NAMESPACE::MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport> MIDI;
+class Midihandler
+{
+    public:
+        static void Init();
+        static void SendCC(midi::Channel _channel, midi::DataByte _controlNumber, midi::DataByte _controlValue);
+};

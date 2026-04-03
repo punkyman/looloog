@@ -32,15 +32,14 @@ void setup() {
   // initialize bus shared by all mux
   Mux::InitMuxBus(BUS_S0_PIN, BUS_S1_PIN, BUS_S2_PIN, BUS_S3_PIN);
 
-  // midi initialization without any input expected
-  MIDI.begin(MIDI_CHANNEL_OFF);
+  
 }
 
 void loop() {
   unsigned long start = millis();
 
   // update each mux to send midi packets
-  g_mux1.Update();
+  //g_mux1.Update();
 
   g_mux2.Update();
 
