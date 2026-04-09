@@ -34,9 +34,9 @@ void setup() {
 void loop() {
   unsigned long start = millis();
 
-  // update each mux to send midi packets
   g_module1Mux1.Update();
   g_module1Mux2.Update();
+
   g_module2Mux1.Update();
   g_module2Mux2.Update();
 
