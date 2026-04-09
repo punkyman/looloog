@@ -1,9 +1,4 @@
 #include <Arduino.h>
-#include "midihandler/midihandler.h"
-#include "control/control.h"
-#include "pot/pot.h"
-#include "button/button.h"
-#include "mux/mux.h"
 #include "board_utils.h"
 
 #define D6 6

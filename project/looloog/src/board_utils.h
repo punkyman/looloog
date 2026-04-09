@@ -1,5 +1,10 @@
 #pragma once
 
+#include "control/control.h"
+#include "pot/pot.h"
+#include "button/button.h"
+#include "mux/mux.h"
+
 #define DECLARE_MUX_CONTROLS(name_, channel_) \
 Control* name_[] = { \
   new Pot   (channel_,    0), \
