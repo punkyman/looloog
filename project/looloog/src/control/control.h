@@ -9,7 +9,7 @@
 
     public:
         Control(midi::Channel _channelNumber, midi::DataByte _controlNumber)
-                : m_channelNumber(_channelNumber), m_controlNumber(_controlNumber)
+                : m_controlNumber(_controlNumber), m_channelNumber(_channelNumber)
         {}
         int GetControlNumber() { return m_controlNumber; }
         virtual void Update(int _muxPin) {}
