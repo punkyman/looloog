@@ -16,7 +16,6 @@
 #define MODULE_2_MUX_1_MIDI_CHANNEL 3
 #define MODULE_2_MUX_2_MIDI_CHANNEL 4
 
-
 DECLARE_MUX(g_module1Mux1, D6, A3, MODULE_1_MUX_1_MIDI_CHANNEL)
 DECLARE_MUX(g_module1Mux2, D7, A2, MODULE_1_MUX_2_MIDI_CHANNEL)
 DECLARE_MUX(g_module2Mux1, D8, A1, MODULE_2_MUX_1_MIDI_CHANNEL)
@@ -39,7 +38,6 @@ void loop() {
   g_module2Mux2.Update();
 
   unsigned long duration = millis() - start;
-
   // cap refresh rate to 60hz
   delay(16 - duration);
 }
