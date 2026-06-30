@@ -15,8 +15,10 @@ The hardware is made out of :
 - an arduino "pro micro" board; this board is an equivalent of the arduino leonardo board which allows for HID devices and classic arduino programming on the same USB port, all in a condensed package. The version is the 5v/16Mhz version.
 - four CD74HC4067 multiplexers; these are 16 inputs multiplexers that allows to connect analog or digital inputs and route them to a single input on the arduino board. The revision used is the E version which was more available than the standard version and has a larger footprint
 - Custom PCBs, one for the main board of the arduino, two for the controls on each panel
-- 56x 100k variable potentiometers
+- 56x 100k linear variable potentiometers (with dust covers)
 - 8 push buttons
+- 1 white LED to know that the device is plugged in
+- a USB type B block for external connectivity, which converts to USB type A, and then to type C through a small USB cable :)
 
 ## Prototype
 
@@ -43,3 +45,14 @@ A module PCB holds two multiplexers to handle 28 potentiometers and 4 push butto
 Gerber file available here : [Module PCB gerber](schematics/pcb/pcb-looloog-module.zip)
 
 ## Code
+
+The project is made for VSCode and PlatformIO, all configured for the pro micro board selected for the project.
+The code makes use of an already existing usb midi library which does most of the job in terms of HID device; the only change happens in *configureUSBInfos.py*, where the device reports its name as the "Looloog" :)
+
+There is an option that outputs the commands on serial instead of sending them through USB midi; this is available for debugging purposes and can be enabled by commenting out the line in platformio.ini :
+```
+;build_flags = -D DEBUG_MIDI_THROUGH_SERIAL
+```
+All inputs send CC changes through USB midi, being split into 4 midi channels. An improvement could be to create a Module class that would represent one panel with its two multiplexers instead of having 4 multiplexers declared; that would make the instrument have 2 midi channels instead of 4, making things a bit easier on the logic when being used on the computer.
+
+Some of the potentiometers turned out to be jiggling a bit when being used; that is due to the arduino ADC reading the value on 10bit with a precision that was somewhat low, and the code mapping the reading to midi 7bit values. When reading the potentiometer values, there is now a margin that allows measuring little variations before considering a real midi CC change.
