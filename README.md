@@ -1,8 +1,8 @@
 # looloog
 
-![Front of the looloog](pictures/front.jpg)
+The looloog is a DIY midi instrument intended to make custom inputs for [vcvrack](https://vcvrack.com/)
 
-The looloog is a custom-made midi instrument intended to make inputs for [vcvrack](https://vcvrack.com/)
+![Front of the looloog](pictures/front.jpg)
 
 ![Buttons of the looloog](pictures/buttons.jpg)
 
